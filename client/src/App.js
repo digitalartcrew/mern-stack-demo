@@ -7,16 +7,9 @@ function App() {
 
   // get some data
   useEffect(() => {
-    // const clientId = "nLM4Hq-rLb931DiT6toUYJdw6g2I-A9wGdZyc4i2YOI";
-    // const searchTerm = "cars";
-    // const resource = `https://api.unsplash.com/search/photos/?query=${searchTerm}&per_page=20&client_id=${clientId}`;
-
-    // fetch(resource)
-    //   .then((res) => res.json())
-    //   .then((data) => setCarData(data.results));
-    fetch("/api/destinations")
+    fetch("/api/unsplash")
       .then((res) => res.json())
-      .then((data) => setCarData(data.data));
+      .then((data) => setCarData(data.data.results));
   }, []);
 
   return (
@@ -26,7 +19,9 @@ function App() {
       {/* Add card container */}
       <div className="card-container">
         {carData &&
-          carData.map((data, index) => <p key={index}>{data?.title}</p>)}
+          carData.map((data, index) => (
+            <p key={index}>{data?.alt_description}</p>
+          ))}
       </div>
     </div>
   );
