@@ -57,5 +57,6 @@ app.get("/api/unsplash", async (req, res) => {
 app.use("/api", DestinationRouter);
 
 app.listen(PORT, () => {
+  // Making a small code change
   console.log(`App listening on PORT: ${PORT}`);
 });
